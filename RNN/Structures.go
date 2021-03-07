@@ -32,32 +32,32 @@ func (n *Network) Clean() error {
 
 func (n *Network) ToCSV() (string) {
   str := ""
-  for a, l := n.Layers {
+  for a, l := range n.Layers {
     if a > 0 {
       str = fmt.Sprintf("%v%v", str, ",")
     }
     str = fmt.Sprintf("%v%v", str, l.Size)
   }
-  for a, l := n.Layers {
+  for a, l := range n.Layers {
     str = fmt.Sprintf("%v%v", str, "\n")
-    for b, vals := l.Biases {
+    for b, vals := range l.Biases {
       if b > 0 {
         str = fmt.Sprintf("%v%v", str, ",")
       }
       str = fmt.Sprintf("%v%v", str, vals[b])
     }
-    for b, vals := l.Alphas {
+    for b, vals := range l.Alphas {
       str = fmt.Sprintf("%v%v", str, "\n")
-      for c, v := vals {
+      for c, v := range vals {
         if c > 0 {
           str = fmt.Sprintf("%v%v", str, ",")
         }
         str = fmt.Sprintf("%v%v", str, v[c])
       }
     }
-    for b, vals := l.Weights {
+    for b, vals := range l.Weights {
       str = fmt.Sprintf("%v%v", str, "\n")
-      for c, v := vals {
+      for c, v := range vals {
         if c > 0 {
           str = fmt.Sprintf("%v%v", str, ",")
         }

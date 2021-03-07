@@ -4,6 +4,8 @@ import (
   "math/rand"
   "time"
   "os"
+  "fmt"
+  "strconv"
   "encoding/csv"
 )
 
@@ -102,7 +104,7 @@ func MakeNormRNN(layers []int) (*Network, error) {
 }
 
 func LoadRNN(path string) (*Network, error) {
-  var m *rnn.Network
+  var m *Network
   // Load template file
   f, err := os.Open(path)
   if err != nil {
@@ -181,7 +183,7 @@ func LoadRNN(path string) (*Network, error) {
     }
     stage += 1
   }
-  
+
   return &Network {
     Layers: layers,
     Depth: len(layers),
